@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ECommerceMvc.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<section class="home-hero mb-4 mb-lg-5">
+    <p class="hero-kicker mb-2">Simple E-Commerce</p>
+    <h1 class="hero-title mb-2">Find something you will love</h1>
+    <p class="hero-subtitle mb-0">Hand-picked items, clear pricing, and a fast checkout flow.</p>
+</section>
+
+<div class="row g-4">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="card product-card h-100 w-100 border-0">
+                <img src="@product.ImageUrl" class="card-img-top product-image" alt="@product.Name" />
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title product-name">@product.Name</h5>
+                    <p class="card-text fw-bold product-price mb-3">@product.Price.ToString("C")</p>
+                    <p class="product-quantity mb-3">In stock: <span>@product.Quantity</span></p>
+                    <div class="mt-auto d-flex gap-2">
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="btn btn-outline-primary btn-sm">View Details</a>
+                        <form asp-controller="Cart" asp-action="Add" method="post">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button class="btn btn-primary btn-sm" type="submit" disabled="@(product.Quantity <= 0)">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

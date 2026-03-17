@@ -1,0 +1,68 @@
+@model ECommerceMvc.Models.CartViewModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<section class="page-head mb-3">
+    <h2 class="mb-1">Shopping Cart</h2>
+    <p class="mb-0">Review your selected products and continue to checkout.</p>
+</section>
+
+@if (!Model.Items.Any())
+{
+    <div class="surface-panel text-center py-4">
+        <div class="alert alert-info mb-3">Your cart is empty.</div>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Continue Shopping</a>
+    </div>
+}
+else
+{
+    <div class="surface-panel">
+        <div class="table-responsive">
+            <table class="table align-middle cart-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="@item.ImageUrl" width="60" height="60" class="rounded" alt="@item.Name" />
+                                    <span>@item.Name</span>
+                                </div>
+                            </td>
+                            <td>@item.Price.ToString("C")</td>
+                            <td>
+                                <form asp-action="UpdateQuantity" method="post" class="d-flex gap-2 cart-qty-form">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <input class="form-control form-control-sm" style="width:90px" type="number" min="1" name="quantity" value="@item.Quantity" />
+                                    <button class="btn btn-sm btn-outline-primary" type="submit">Update</button>
+                                </form>
+                            </td>
+                            <td>@item.LineTotal.ToString("C")</td>
+                            <td>
+                                <form asp-action="Remove" method="post">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3 cart-total-row">
+            <h4 class="mb-0">Total: @Model.TotalPrice.ToString("C")</h4>
+            <a asp-controller="Order" asp-action="Checkout" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+    </div>
+}

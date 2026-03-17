@@ -1,0 +1,62 @@
+@model ECommerceMvc.Models.CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<section class="page-head mb-3">
+    <h2 class="mb-1">Checkout</h2>
+    <p class="mb-0">Confirm your delivery details and review your order summary.</p>
+</section>
+
+<div class="row g-4 checkout-layout">
+    <div class="col-lg-7">
+        <div class="surface-panel h-100">
+            <form asp-action="Checkout" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="FullName" class="form-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label"></label>
+                <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+                <button class="btn btn-success" type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="surface-panel h-100">
+            <h5 class="mb-3">Order Summary</h5>
+            <ul class="list-group mb-3">
+                @foreach (var item in Model.CartItems)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>@item.Name x @item.Quantity</span>
+                        <strong>@item.LineTotal.ToString("C")</strong>
+                    </li>
+                }
+                <li class="list-group-item d-flex justify-content-between fw-semibold">
+                    <span>Total</span>
+                    <strong>@Model.TotalPrice.ToString("C")</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

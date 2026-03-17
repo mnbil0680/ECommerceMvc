@@ -1,0 +1,40 @@
+@model IEnumerable<ECommerceMvc.Models.Product>
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Manage Products</h2>
+    <a asp-action="CreateProduct" class="btn btn-primary">Add Product</a>
+</div>
+
+<div class="surface-panel">
+    <div class="table-responsive">
+        <table class="table table-striped align-middle admin-table mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price.ToString("C")</td>
+                        <td>@product.Quantity</td>
+                        <td><img src="@product.ImageUrl" width="70" height="50" class="rounded" alt="@product.Name" /></td>
+                        <td>
+                            <a asp-action="EditProduct" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a asp-action="DeleteProduct" asp-route-id="@product.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

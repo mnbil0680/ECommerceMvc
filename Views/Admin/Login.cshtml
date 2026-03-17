@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Admin Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="surface-panel auth-panel">
+            <h2 class="mb-3">Admin Login</h2>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+            }
+
+            <form asp-action="Login" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input name="username" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" />
+                </div>
+                <button class="btn btn-dark w-100" type="submit">Login</button>
+            </form>
+
+            <div class="text-muted mt-3 small">
+                Demo credentials: admin / admin123
+            </div>
+        </div>
+    </div>
+</div>

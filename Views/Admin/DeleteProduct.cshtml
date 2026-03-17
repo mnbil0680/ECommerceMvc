@@ -1,0 +1,23 @@
+@model ECommerceMvc.Models.Product
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<h2>Delete Product</h2>
+
+<div class="surface-panel mt-3">
+    <div class="alert alert-warning">
+        Are you sure you want to delete <strong>@Model.Name</strong>?
+    </div>
+
+    <div class="mb-3">
+        <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+        <img src="@Model.ImageUrl" width="200" class="rounded" alt="@Model.Name" />
+    </div>
+
+    <form asp-action="DeleteProduct" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a asp-action="Products" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>

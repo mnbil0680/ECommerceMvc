@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <script type="importmap"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ECommerceMvc.styles.css" asp-append-version="true" />
+</head>
+<body class="admin-body">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a class="admin-brand" asp-controller="Admin" asp-action="Products">Control Room</a>
+            <nav class="admin-nav">
+                <a asp-controller="Admin" asp-action="Products" class="admin-nav-link">Products</a>
+                <a asp-controller="Admin" asp-action="Users" class="admin-nav-link">Users</a>
+                <a asp-controller="Home" asp-action="Index" class="admin-nav-link">Storefront</a>
+            </nav>
+            <form asp-controller="Admin" asp-action="Logout" method="post" class="mt-auto">
+                <button type="submit" class="btn btn-outline-light w-100">Logout</button>
+            </form>
+        </aside>
+
+        <main class="admin-main">
+            @if (TempData["SuccessMessage"] is string message)
+            {
+                <div class="alert alert-success app-alert mb-3">@message</div>
+            }
+            <div class="admin-content">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,11 @@
+@model ECommerceMvc.Models.Order
+@{
+    ViewData["Title"] = "Order Success";
+}
+
+<div class="surface-panel text-center success-panel py-4">
+    <h2 class="text-success">Order placed successfully!</h2>
+    <p>Thank you, @Model.FullName. Your order number is <strong>#@Model.Id</strong>.</p>
+    <p class="mb-4">Total Paid: <strong>@Model.TotalPrice.ToString("C")</strong></p>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a>
+</div>
