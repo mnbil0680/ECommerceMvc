@@ -221,4 +221,5 @@ D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\ECommerceMvc.genruntimeconfig
 D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\ref\ECommerceMvc.dll
 D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\compressed\g7sqlkzlq8-{0}-3fgn7iezv2-3fgn7iezv2.gz
 D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\compressed\zt3brw62ip-{0}-3fgn7iezv2-3fgn7iezv2.gz
-D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\compressed\5kmqx31ibg-{0}-ucm7ao77df-ucm7ao77df.gz
+D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\ECommerceMvc.sourcelink.json
+D:\repos\E-Commerce\ECommerceMvc\obj\Debug\net10.0\compressed\5kmqx31ibg-{0}-s5hkoll8c9-s5hkoll8c9.gz

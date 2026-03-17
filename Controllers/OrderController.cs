@@ -111,6 +111,7 @@ public class OrderController : Controller
             Address = model.Address,
             PhoneNumber = model.PhoneNumber,
             TotalPrice = cart.Sum(x => x.LineTotal),
+            Status = "Pending",
             OrderItems = cart.Select(item => new OrderItem
             {
                 ProductId = item.ProductId,

@@ -355,6 +355,32 @@ textarea.form-control {
     white-space: nowrap;
 }
 
+.order-status-badge {
+    padding: 0.38rem 0.56rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: rgba(243, 156, 18, 0.16);
+    color: #9a5e0f;
+}
+
+.status-processing {
+    background: rgba(52, 152, 219, 0.16);
+    color: #1e5f8e;
+}
+
+.status-completed {
+    background: rgba(40, 167, 69, 0.16);
+    color: #1d6f33;
+}
+
+.status-cancelled {
+    background: rgba(220, 53, 69, 0.16);
+    color: #9a2836;
+}
+
 @media (max-width: 991.98px) {
     .product-image {
         height: 200px;

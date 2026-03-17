@@ -26,5 +26,9 @@ public class Order
 
     public decimal TotalPrice { get; set; }
 
+    [Required]
+    [StringLength(30)]
+    public string Status { get; set; } = "Pending";
+
     public List<OrderItem> OrderItems { get; set; } = new();
 }
